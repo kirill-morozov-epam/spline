@@ -119,46 +119,46 @@
                     </dependency>
                 </dependencies>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <version>1.8</version>
-                <executions>
-                    <execution>
-                        <phase>prepare-package</phase>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                        <configuration>
-                            <target>
-                                <echo message="installing redoc-cli"/>
-                                <exec executable="cmd" osfamily="windows" failonerror="true">
-                                    <arg line="/c npm install redoc-cli --no-color"/>
-                                </exec>
-                                <exec executable="npm" osfamily="unix" failonerror="true">
-                                    <arg line="install redoc-cli --no-color"/>
-                                </exec>
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-antrun-plugin</artifactId>-->
+<!--                <version>1.8</version>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <phase>prepare-package</phase>-->
+<!--                        <goals>-->
+<!--                            <goal>run</goal>-->
+<!--                        </goals>-->
+<!--                        <configuration>-->
+<!--                            <target>-->
+<!--                                <echo message="installing redoc-cli"/>-->
+<!--                                <exec executable="cmd" osfamily="windows" failonerror="true">-->
+<!--                                    <arg line="/c npm install redoc-cli &#45;&#45;no-color"/>-->
+<!--                                </exec>-->
+<!--                                <exec executable="npm" osfamily="unix" failonerror="true">-->
+<!--                                    <arg line="install redoc-cli &#45;&#45;no-color"/>-->
+<!--                                </exec>-->
 
-                                <echo message="generate consumer documentation"/>
-                                <exec executable="cmd" osfamily="windows" failonerror="true">
-                                    <arg line="/c node_modules\.bin\redoc-cli.cmd bundle -o ${swagger.output.path}/consumer.html ${swagger.output.path}/consumerSwagger.json"/>
-                                </exec>
-                                <exec executable="node_modules/.bin/redoc-cli" osfamily="unix" failonerror="true">
-                                    <arg line="bundle -o ${swagger.output.path}/consumer.html ${swagger.output.path}/consumerSwagger.json"/>
-                                </exec>
+<!--                                <echo message="generate consumer documentation"/>-->
+<!--                                <exec executable="cmd" osfamily="windows" failonerror="true">-->
+<!--                                    <arg line="/c node_modules\.bin\redoc-cli.cmd bundle -o ${swagger.output.path}/consumer.html ${swagger.output.path}/consumerSwagger.json"/>-->
+<!--                                </exec>-->
+<!--                                <exec executable="node_modules/.bin/redoc-cli" osfamily="unix" failonerror="true">-->
+<!--                                    <arg line="bundle -o ${swagger.output.path}/consumer.html ${swagger.output.path}/consumerSwagger.json"/>-->
+<!--                                </exec>-->
 
-                                <echo message="generate producer documentation"/>
-                                <exec executable="cmd" osfamily="windows" failonerror="true">
-                                    <arg line="/c node_modules\.bin\redoc-cli.cmd bundle -o ${swagger.output.path}/producer.html ${swagger.output.path}/producerSwagger.json"/>
-                                </exec>
-                                <exec executable="node_modules/.bin/redoc-cli" osfamily="unix" failonerror="true">
-                                    <arg line="bundle -o ${swagger.output.path}/producer.html ${swagger.output.path}/producerSwagger.json"/>
-                                </exec>
-                            </target>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+<!--                                <echo message="generate producer documentation"/>-->
+<!--                                <exec executable="cmd" osfamily="windows" failonerror="true">-->
+<!--                                    <arg line="/c node_modules\.bin\redoc-cli.cmd bundle -o ${swagger.output.path}/producer.html ${swagger.output.path}/producerSwagger.json"/>-->
+<!--                                </exec>-->
+<!--                                <exec executable="node_modules/.bin/redoc-cli" osfamily="unix" failonerror="true">-->
+<!--                                    <arg line="bundle -o ${swagger.output.path}/producer.html ${swagger.output.path}/producerSwagger.json"/>-->
+<!--                                </exec>-->
+<!--                            </target>-->
+<!--                        </configuration>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>

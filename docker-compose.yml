@@ -1,0 +1,36 @@
+version: "3"
+services:
+
+  aragon:
+    image: arangodb:3.5.1
+    environment:
+      - ARANGO_NO_AUTH=1
+    ports:
+      - "8529:8529"
+    networks:
+      spline:
+        aliases:
+          - aragon
+
+  spline-rest:
+    image: ecsa00400b48.epam.com:9990/absaoss/spline-rest-server:0.4.0
+    environment:
+      - spline.database.connectionUrl=arangodb://aragon:8529/spline
+    ports:
+      - "8090:8080"
+    networks:
+      spline:
+        aliases:
+          - spline-rest
+
+#  spline-ui:
+#    image: ecsa00400b48.epam.com:9990/absaoss/spline-web-client:0.4.0
+#    environment:
+#      - spline.consumer.url=http://spline-rest:8080/consumer
+#    ports:
+#      - "9090:8080"
+#    networks:
+#      - spline
+
+networks:
+  spline:
