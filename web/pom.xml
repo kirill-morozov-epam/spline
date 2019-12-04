@@ -15,7 +15,8 @@
   ~ limitations under the License.
   -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>spline-web</artifactId>
@@ -241,23 +242,27 @@
                         <phase>prepare-package</phase>
                         <configuration>
                             <target name="ui-build">
-                                <echo>Preparing UI build</echo>
-                                <exec executable="cmd" dir="${webui.basedir}" osfamily="windows" failonerror="true">
-                                    <arg line="/c npm install --no-color" />
-                                </exec>
-                                <exec executable="npm" dir="${webui.basedir}" osfamily="unix" failonerror="true">
-                                    <arg line="install --no-color" />
+                                <echo>Preparing UI build ${webui.basedir}</echo>
+                                <exec executable="bash" dir="${webui.basedir}" osfamily="unix" failonerror="true">
+                                    <arg line="build.sh"/>
                                 </exec>
 
-                                <echo>Executing UI build</echo>
-                                <exec executable="cmd" dir="${webui.basedir}" osfamily="windows" failonerror="true">
-                                    <env key="SPLINE_VERSION" value="${project.version}" />
-                                    <arg line="/c npm run prod-build --no-color" />
-                                </exec>
-                                <exec executable="npm" dir="${webui.basedir}" osfamily="unix" failonerror="true">
-                                    <env key="SPLINE_VERSION" value="${project.version}" />
-                                    <arg line="run prod-build --no-color" />
-                                </exec>
+                                <!--                                <exec executable="cmd" dir="${webui.basedir}" osfamily="windows" failonerror="true">-->
+                                <!--                                    <arg line="/c npm install &#45;&#45;no-color" />-->
+                                <!--                                </exec>-->
+                                <!--                                <exec executable="npm" dir="${webui.basedir}" osfamily="unix" failonerror="true">-->
+                                <!--                                    <arg line="install &#45;&#45;no-color" />-->
+                                <!--                                </exec>-->
+
+                                <!--                                <echo>Executing UI build</echo>-->
+                                <!--                                <exec executable="cmd" dir="${webui.basedir}" osfamily="windows" failonerror="true">-->
+                                <!--                                    <env key="SPLINE_VERSION" value="${project.version}" />-->
+                                <!--                                    <arg line="/c npm run prod-build &#45;&#45;no-color" />-->
+                                <!--                                </exec>-->
+                                <!--                                <exec executable="npm" dir="${webui.basedir}" osfamily="unix" failonerror="true">-->
+                                <!--                                    <env key="SPLINE_VERSION" value="${project.version}" />-->
+                                <!--                                    <arg line="run prod-build &#45;&#45;no-color" />-->
+                                <!--                                </exec>-->
                             </target>
                         </configuration>
                         <goals>
