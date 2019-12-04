@@ -77,6 +77,8 @@
 
         <module>examples</module>
         <module>integration-tests</module>
+        <module>simply-spline-test</module>
+
 
     </modules>
 

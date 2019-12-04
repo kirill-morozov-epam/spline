@@ -17,20 +17,20 @@ services:
     environment:
       - spline.database.connectionUrl=arangodb://aragon:8529/spline
     ports:
-      - "8090:8080"
+      - "9595:8080"
     networks:
       spline:
         aliases:
           - spline-rest
 
-#  spline-ui:
-#    image: ecsa00400b48.epam.com:9990/absaoss/spline-web-client:0.4.0
-#    environment:
-#      - spline.consumer.url=http://spline-rest:8080/consumer
-#    ports:
-#      - "9090:8080"
-#    networks:
-#      - spline
+  spline-ui:
+    image: ecsa00400b48.epam.com:9990/absaoss/spline-web-client:0.4.0
+    environment:
+      - spline.consumer.url=http://ecsa00400926.epam.com:9595/consumer
+    ports:
+      - "9596:8080"
+    networks:
+      - spline
 
 networks:
   spline:
