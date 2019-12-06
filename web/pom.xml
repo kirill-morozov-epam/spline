@@ -243,26 +243,24 @@
                         <configuration>
                             <target name="ui-build">
                                 <echo>Preparing UI build ${webui.basedir}</echo>
-                                <exec executable="bash" dir="${webui.basedir}" osfamily="unix" failonerror="true">
-                                    <arg line="build.sh"/>
+
+                                <exec executable="cmd" dir="${webui.basedir}" osfamily="windows" failonerror="true">
+                                    <arg line="/c npm install --no-color"/>
+                                </exec>
+                                <exec executable="npm" dir="${webui.basedir}" osfamily="unix" failonerror="true">
+                                    <arg line="install --no-color"/>
                                 </exec>
 
-                                <!--                                <exec executable="cmd" dir="${webui.basedir}" osfamily="windows" failonerror="true">-->
-                                <!--                                    <arg line="/c npm install &#45;&#45;no-color" />-->
-                                <!--                                </exec>-->
-                                <!--                                <exec executable="npm" dir="${webui.basedir}" osfamily="unix" failonerror="true">-->
-                                <!--                                    <arg line="install &#45;&#45;no-color" />-->
-                                <!--                                </exec>-->
+                                <echo>Executing UI build</echo>
+                                <exec executable="cmd" dir="${webui.basedir}" osfamily="windows" failonerror="true">
+                                    <env key="SPLINE_VERSION" value="${project.version}"/>
+                                    <arg line="/c npm run prod-build --no-color"/>
+                                </exec>
+                                <exec executable="npm" dir="${webui.basedir}" osfamily="unix" failonerror="true">
+                                    <env key="SPLINE_VERSION" value="${project.version}"/>
+                                    <arg line="run prod-build --no-color"/>
+                                </exec>
 
-                                <!--                                <echo>Executing UI build</echo>-->
-                                <!--                                <exec executable="cmd" dir="${webui.basedir}" osfamily="windows" failonerror="true">-->
-                                <!--                                    <env key="SPLINE_VERSION" value="${project.version}" />-->
-                                <!--                                    <arg line="/c npm run prod-build &#45;&#45;no-color" />-->
-                                <!--                                </exec>-->
-                                <!--                                <exec executable="npm" dir="${webui.basedir}" osfamily="unix" failonerror="true">-->
-                                <!--                                    <env key="SPLINE_VERSION" value="${project.version}" />-->
-                                <!--                                    <arg line="run prod-build &#45;&#45;no-color" />-->
-                                <!--                                </exec>-->
                             </target>
                         </configuration>
                         <goals>

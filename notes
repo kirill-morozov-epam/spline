@@ -24,11 +24,30 @@ kafka-console-consumer --bootstrap-server ecsa00400926.epam.com:9092,ecsa0040092
 kafka-run-class kafka.tools.GetOffsetShell --broker-list ecsa00400926.epam.com:9092,ecsa00400927.epam.com:9092,ecsa00400b48.epam.com:9092 --topic ATLAS_HOOK --time -1
 
 
-
-import za.co.absa.spline.harvester.SparkLineageInitializer._
+import za.co.absa.spline.core.SparkLineageInitializer._
 import spark.implicits._
 import org.apache.spark.sql.SaveMode
+
+spark.enableLineageTracking()
 
 val ddf = spark.read.option("header", "true").option("inferSchema", "true").csv("data/output/batch/java-sample.csv")
 ddf.write.mode(SaveMode.Overwrite).csv("data/output/batch/java-sample2.csv")
 
+
+
+docker run -it -v /home/osboxes/1/spline:/spline maven:3.6.3-jdk-8 bash
+
+docker run -it -v /home/osboxes/1/spline:/spline maven:3.6.3-jdk-8-nodejs-6.9 bash
+
+
+docker run -it  3.6.3-jdk-8-nodejs-6.9 bash
+
+
+docker run -it maven:3.6.3-jdk-8-nodejs-6.9-clear bash
+
+
+docker save maven:3.6.3-jdk-8-nodejs-6.9-clear | gzip > maven:3.6.3-jdk-8-nodejs-6.9-clear.tar.gz
+
+
+docker build -t  maven:3.6.3-jdk-8-nodejs-12.13.1-clear .
+docker run -it -v /home/osboxes/1/spline:/spline maven:3.6.3-jdk-8-nodejs-12.13.1-clear bash
