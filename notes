@@ -51,3 +51,11 @@ docker save maven:3.6.3-jdk-8-nodejs-6.9-clear | gzip > maven:3.6.3-jdk-8-nodejs
 
 docker build -t  maven:3.6.3-jdk-8-nodejs-12.13.1-clear .
 docker run -it -v /home/osboxes/1/spline:/spline maven:3.6.3-jdk-8-nodejs-12.13.1-clear bash
+
+
+docker run -it maven:3.6.3-jdk-8-nodejs-12.13.1-clear bash
+
+
+https://github.com/AbsaOSS/spline/archive/release/0.4.0.zip
+
+
