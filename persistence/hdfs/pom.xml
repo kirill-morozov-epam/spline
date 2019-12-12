@@ -42,6 +42,11 @@
             <version>2.6.5</version>
         </dependency>
         <dependency>
+            <groupId>za.co.absa.spline</groupId>
+            <artifactId>spline-persistence-atlas</artifactId>
+            <version>0.3.9</version>
+        </dependency>
+        <dependency>
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-core_${scala.compat.version}</artifactId>
         </dependency>
@@ -53,6 +58,17 @@
         <dependency>
             <groupId>org.json4s</groupId>
             <artifactId>json4s-ext_${scala.compat.version}</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.atlas</groupId>
+            <artifactId>atlas-notification</artifactId>
+            <version>1.0.0</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>jdk.tools</groupId>
+                    <artifactId>jdk.tools</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 
