@@ -41,6 +41,12 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-mllib_${scala.compat.version}</artifactId>
+            <version>${spark.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
             <groupId>za.co.absa.spline</groupId>
             <artifactId>spline-core</artifactId>
             <version>${project.version}</version>
@@ -183,7 +189,7 @@
                         <configuration>
                             <executable>java</executable>
                             <arguments>
-                                <argument>-Dspline.persistence.factory=za.co.absa.spline.persistence.mongo.MongoPersistenceFactory</argument>
+<!--                                <argument>-Dspline.persistence.factory=za.co.absa.spline.persistence.mongo.MongoPersistenceFactory</argument>-->
                                 <argument>-Dspline.mongodb.url=${spline.mongodb.url}</argument>
                                 <argument>-Dspline.mongodb.name=${spline.mongodb.name}</argument>
                                 <argument>-classpath</argument>
